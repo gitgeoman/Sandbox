@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 #dowlnoad file
 get_file(){
     # echo ${item_name}
@@ -17,14 +15,18 @@ transform(){
 echo 'start skryptu'
 
 no_of_threats=15 # stacja 80
+
+
+# shellcheck disable=SC2013
 for i in $(cat filelist.txt); do
     ((a=a%no_of_threats)); ((a++==0)) && wait
-    get_file ${i} &
+    get_file "${i}" &
 done
 
+# shellcheck disable=SC2013
 for i in $(cat filelist.txt); do
     ((a=a%no_of_threats)); ((a++==0)) && wait
-    transform ${i} &
+    transform "${i}" &
 done
 
 echo 'koniec skryptu'
